@@ -1,0 +1,8 @@
+Name,Age,Salary,Department
+John Doe,25,50000,Sales
+jane smith,30,60000,Marketing
+unknown,35,70000,IT
+Bob Johnson,0,80000,Sales
+Alice Brown,28,0,Marketing
+MIKE WILSON,45,90000,IT
+sarah davis,32,55000,unknown
