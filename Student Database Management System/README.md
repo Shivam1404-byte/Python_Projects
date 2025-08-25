@@ -28,7 +28,7 @@ What I’m Working On Next
 
 Fixing bugs in update & search functions
 
-Adding proper JOIN queries for course enrollments
+Adding proper JOIN queries for course and enrollments
 
 Making validation more robust (e.g. regex checks, date formatting)
 
@@ -38,3 +38,9 @@ Why I Built This
 
 I wanted to push myself beyond tutorials and actually struggle through building a project.
 Yes, there are bugs. But that’s the point — this repo shows my process, not just the final result.
+
+Built-in Modules Used
+
+re → for regex validation
+
+datetime → for handling dates
