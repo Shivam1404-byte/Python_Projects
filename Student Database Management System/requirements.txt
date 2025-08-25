@@ -1,1 +1,9 @@
-mysql-connector-python==9.4.0
+Python 3.x
+
+MySQL
+
+Libraries:
+
+mysql-connector-python
+re
+datetime
