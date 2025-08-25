@@ -18,11 +18,11 @@ Features (so far):
 
 Database Structure:
 
-# students : stores student info
+- students : stores student info
 
-# courses : stores course info
+- courses : stores course info
 
-# enrollment : many-to-many relationship between students & courses
+- enrollment : many-to-many relationship between students & courses
 
 What I’m Working On Next:
 
