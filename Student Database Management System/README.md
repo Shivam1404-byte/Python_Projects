@@ -1,46 +1,53 @@
+# Student Database Management System
 
-Student Database Management System
+A simple Python + MySQL project to manage student records. Supports input validation, error handling, and relational queries across multiple tables.
 
-A simple Python + MySQL project where I’m building a mini student management system from scratch.
-This project is my way of learning Python, SQL, and database design by actually coding instead of just reading tutorials.
+# Features
 
-Features (so far):
+- Add Students – with validation for name, email, date, etc.
 
-1. Add new students (with input validation)
+- View Students – list all student records.
 
-2. View all students
+- Update Student Info – update name, email, or major safely.
 
-3. Update student details (currently debugging field validation)
+- Delete Student – remove a student by ID.
 
-4. Search students by name, email, or major (still tweaking validation & query)
+- Search Students – search by name, email, or major (with validation).
 
-5. Delete student records (basic version done)
+- Relational Tables – includes students, courses, and enrollments.
 
-Database Structure:
+- Error Handling – clean messages instead of crashes.
 
-- students : stores student info
+# Database Schema
 
-- courses : stores course info
+- students
 
-- enrollment : many-to-many relationship between students & courses
+student_id (PK)
 
-What I’m Working On Next:
+first_name
 
-Fixing bugs in update & search functions
+last_name
 
-Adding proper JOIN queries for course and enrollments
+email
 
-Making validation more robust (e.g. regex checks, date formatting)
+major
 
-Writing cleaner error handling
+- courses
 
-Why I Built This : 
+course_id (PK)
 
-I wanted to push myself beyond tutorials and actually struggle through building a project.
-Yes, there are bugs. But that’s the point — this repo shows my process, not just the final result.
+course_name
 
-Built-in Modules Used :
+credits
 
-re → for regex validation
+- enrollment (Many-to-Many)
 
-datetime → for handling dates
+enrollment_id (PK)
+
+student_id (FK → students)
+
+course_id (FK → courses)
+
+enrollment_date
+
+grade
