@@ -222,7 +222,65 @@ class StudentDB:
             print("Validation Failed ",v)
         except Error as e:
             print("Search Failed : ",e)
-    
+
+    def get_student_courses(self,student_id):
+        try:
+            select_query = """SELECT C.course_id,C.course_code,C.course_name,C.credits,E.enrollment_date,E.grade FROM enrollment E 
+             JOIN courses C ON C.course_id = E.course_id WHERE E.student_id = %s"""
+            self.cursor.execute(select_query,(student_id,))
+            records=self.cursor.fetchall()
+            if not records:
+                print("Student is not enrolled in any courses.")
+                return
+            print(f"Courses for student ID {student_id}:")
+            print("-"*80)
+            for row in records:
+                grade = row[5] if row[5] is not None else "Not graded"
+                print(f"Course ID : {row[0]} Course Name : {row[1]} Credits : {row[2]} Enrollment Date : {row[3]} Grade : {grade}")
+            print("-"*80)
+        except Error as e:
+            print("Failed to retrieve data of student ID : ",e)
+
+    def get_course_students(self,course_id):
+        try:
+            select_query = """
+                SELECT S.student_id,S.first_name,S.last_name,S.email,E.enrollment_date,E.grade FROM enrollment E 
+                JOIN students S ON E.student_id = S.student_id WHERE E.course_id = %s
+            """
+            self.cursor.execute(select_query,(course_id,))
+            records = self.cursor.fetchall()
+            if not records:
+                print("No student found for the course")
+                return
+            print("Course details ")
+            print("-"*80)
+            for row in records:
+                grade = row[5] if row[5] is not None else "Not graded"
+                print(f"Student ID : {row[0]} Student Name : {row[1]} {row[2]} E-mail : {row[3]} Enrollment Date : {row[4]} Grade : {grade}")
+            print("-"*80)
+        except Error as e:
+            print("Failed to retrieve data from courses ",e)
+
+    def Student_and_Course_details(self,student_id):
+        try:
+            select_query="""
+                SELECT S.student_id,S.first_name,S.last_name,C.course_name,S.email,E.enrollment_date,E.grade FROM enrollment AS E JOIN students S ON 
+                S.student_id=E.student_id JOIN courses AS C ON C.course_id = E.course_id WHERE S.student_id = %s;
+            """
+            self.cursor.execute(select_query,(student_id,))
+            records = self.cursor.fetchall()
+            if not records:
+                print("No Students found")
+                return
+            print("Student Details : ")
+            print("-"*80)
+            for row in records:
+                grade = row[6] if row[6] is not None else "Not graded"
+                print(f"Student ID : {row[0]} Name:{row[1]} {row[2]} Course Name : {row[3]} E-mail : {row[4]} Enrollment Date : {row[5]} Grade : {grade}")
+        except Error as e:
+            print("Failed to retrieve Data : ",e)  
+
+
     def close_connection(self):
         if self.conn.is_connected():
             self.cursor.close()
@@ -243,7 +301,10 @@ def main():
         print("7. View Courses")
         print("8. Add enrollment")
         print("9. view enrollment")
-        print("10. Exit")
+        print("10. View Courses for a Student")
+        print("11. View Students in a Course")
+        print("12. View Student and Course Details")
+        print("13. Exit")
 
         choice = int(input("Enter your choices : "))
 
@@ -354,6 +415,36 @@ def main():
             db.View_enrollment()
 
         elif choice == 10:
+            try:
+                student_id = int(input("Enter the Student ID : "))
+                student = str(student_id)
+                if not db.isValidNumeric(student):
+                    raise ValueError("Enter the valid student ID")
+                db.get_student_courses(student_id)
+            except ValueError as v:
+                print("Validation Failed : ",v)
+
+        elif choice == 11:
+            try:
+                course_id = int(input("Enter the Course ID : "))
+                course = str(course_id)
+                if not db.isValidNumeric(course):
+                    raise ValueError("Enter the valid student ID")
+                db.get_course_students(course_id)
+            except ValueError as v:
+                print("Validation Failed : ",v)
+
+        elif choice == 12:
+            try:
+                student_id = int(input("Enter the Student ID : "))
+                student = str(student_id)
+                if not db.isValidNumeric(student):
+                    raise ValueError("Enter the valid student ID")
+                db.Student_and_Course_details(student_id)
+            except ValueError as v:
+                print("Validation Failed : ",v)
+
+        elif choice == 13:
             db.close_connection()
             print("GoodBye")
             break
