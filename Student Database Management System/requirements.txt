@@ -7,3 +7,5 @@ Libraries:
 mysql-connector-python
 re
 datetime
+
+Create Database school in MySQL
