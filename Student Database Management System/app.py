@@ -8,8 +8,8 @@ class StudentDB:
         try:
             self.conn = mysql.connector.connect(
                 host = "localhost",
-                user = "devuser",
-                password = "Shivam@123",
+                user = "root",
+                password = "password",
                 database = "school"
             )
             if self.conn.is_connected():
