@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            padding:20px;
+        }
+        a,input{
+            padding:10px;
+            margin:10px
+        }
+        .btn-update{
+            background:green;
+            color:white
+        }
+        .btn-back{
+            background-color:blue; 
+            color:white;
+            margin:10px;
+        }
+        button{
+            border:none;
+            padding:10px;
+            margin:10px;    
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form action="{{url_for('update',task_id = task_id)}}" method = "POST">
+        <input type="text" name="task" placeholder="Enter a task">
+        <button class="btn-update">Update Task</button> 
+    </form>    
+    <a href="/" class="btn-back">Back to home</a>
+</body>
+</html>
