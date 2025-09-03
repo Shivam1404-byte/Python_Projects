@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members of Library</title>
+    <style>
+        body{
+            margin:10px;
+            padding:10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            margin:10px;
+            padding:10px;
+            color:white;
+            text-decoration: none;
+            font-weight:bold
+        }
+        .btn-add{
+            background-color: green;
+        }
+        .btn-back{
+            background-color: blue;
+        }
+        table{
+            margin:20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Members of Library</h1>
+    <table border="1" cellpadding="10px">
+        <tr>
+            <th>ID</th>
+            <th>Student ID</th>
+            <th>Book ID</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Returned</th>
+        </tr>
+        {% for Issued in Issue_books %}
+        <tr>
+            <td>{{Issued.id}}</td>
+            <td>{{Issued.student_id}}</td>
+            <td>{{Issued.book_id}}</td>
+            <td>{{Issued.issue_date}}</td>
+            <td>{{Issued.return_date}}</td>
+            <td>{{Issued.returned}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{url_for('home')}}" class="btn-back">Back to home</a>
+    <a href="{{url_for('issue_book')}}" class="btn-add">Issue Another book</a>
+</body>
+</html>

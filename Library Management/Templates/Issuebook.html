@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book to issue</title>
+    <style>
+        body{
+            margin:10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        select{
+            margin:10px;
+            padding:8px;
+            font-size:15px;
+            border:10px;
+        }
+        a{
+            background-color: green;
+            color:white;
+            padding:10px;
+            margin:10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top:10px;
+        }
+        button{
+            margin:10px;
+            padding:10px;
+            border:none;
+            background-color: blue;
+            color:white;
+        }
+        .date{
+            padding:5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book to Issue</h1>
+    <form action="{{url_for('Issue')}}" method="POST">
+        
+        <label for="">Student Name :</label>
+        <select name="student_id">
+            {% for student in students %}
+            <option value="{{student.id}}">{{student.name}}</option>
+            {% endfor %}
+        </select><br>
+        <label for="">Book Name :</label>
+        <select name="book_id">
+            {% for book in books %}
+            <option value="{{book.id}}">{{book.title}}</option>
+            {% endfor %}
+        </select><br>
+        <label for="">Return Date :</label>
+        <input type="datetime" name="datetime" class="date" placeholder="Mention the return date(YYYY-MM-DD)">
+        <button class="btn-submit">Submit</button>
+    </form>
+    <a href="{{url_for('home')}}" class="btn-back">Back to home</a>
+</body>
+</html>

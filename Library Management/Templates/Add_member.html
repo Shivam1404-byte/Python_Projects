@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Member</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin:20px;
+        }
+        label,input{
+            margin: 10px;
+            padding: 5px;    
+        }
+        .btn-back{
+            margin:10px;
+            padding:6px;
+            background-color: blue;
+            color:white;
+            text-decoration: none;
+        }
+        button{
+            border:none;
+            padding:10px;
+            color:white;
+            background-color: blue;
+            font-size: 15px;
+        }
+        form{
+            margin: 10px;
+            padding: 6px;
+        }
+        .btn-back{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Member</h1>
+    <form action="{{url_for('Add')}}" method='POST'>
+        <label for="">Name : </label>
+        <input type="text" class="name" name="name" placeholder="Enter your name"><br>
+        <label>Age : </label>
+        <input type="text" class="age" name="age" placeholder="Enter your age"><br>
+        <button class="btn-add">Add member</button>
+    </form>
+    <a href="{{url_for('home')}}" class="btn-back">Back to home</a>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members of Library</title>
+    <style>
+        body{
+            margin:10px;
+            padding:10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            margin:10px;
+            padding:10px;
+            color:white;
+            text-decoration: none;
+            font-weight:bold
+        }
+        .btn-add{
+            background-color: green;
+        }
+        .btn-back{
+            background-color: blue;
+        }
+        table{
+            margin:20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Members of Library</h1>
+    <table border="1" cellpadding="10px">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        {% for member in members %}
+        <tr>
+            <td>{{member.id}}</td>
+            <td>{{member.name}}</td>
+            <td>{{member.age}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{url_for('home')}}" class="btn-back">Back to home</a>
+    <a href="{{url_for('Add_member')}}" class="btn-add">Add another member</a>
+</body>
+</html>

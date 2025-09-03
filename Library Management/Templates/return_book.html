@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Return</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin:10px;
+        }
+        select{
+            margin:10px 15px;
+            padding:4px 10px;
+            font-size:15px
+        }
+        form{
+            margin:10px;
+        }
+        button{
+            padding:6px 10px;
+            font-size:14px;
+            border:none;
+            background-color: green;
+            color:white;
+            font-weight: bold;
+        }
+        .btn-back{
+            padding:6px;
+            background-color: blue;
+            color:white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select the book to return</h1>
+        <form action="{{url_for('Return')}}" method="POST">
+            <label for="">Book Name :</label>
+            <select name="book_id">
+            {% for book in books %}
+            <option value="{{book.id}}">{{book.title}}</option>
+            {% endfor %}
+        </select><br>
+        <button class="btn-return">Return</button>
+        </form>
+        <a href="{{url_for('home')}}" class="btn-back">Back to home</a>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin:20px;
+        }
+        a{
+            margin:10px;
+            padding:10px;
+        }
+        .btn-add{
+            color:whitesmoke;
+            background-color: green;
+            text-decoration: none;
+        }
+        .btn-view{
+            color:white;
+            background-color: blue;
+            text-decoration: none;
+        }
+        .btn-issueview{
+            color:white;
+            background-color: aquamarine;
+            text-decoration: none;
+        }
+        .btn-delete{
+            color:white;
+            background-color: red;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Library Management System</h1>
+    <h2>Members</h2>
+    <a href="{{url_for('Add_member')}}" class="btn-add">Add member</a>
+    <a href="{{url_for('view')}}" class="btn-view">View member</a>
+    <h2>Books</h2>
+    <a href="{{url_for('Add_books')}}" class="btn-add">Add Books</a>
+    <a href="{{url_for('View_books')}}" class="btn-view">View Books</a>
+    <h2>Issue Book</h2>
+    <a href="{{url_for('issue_book')}}" class="btn-add">Issue Book</a>
+    <a href="{{url_for('view_Issued')}}" class="btn-issueview">View Issue books</a>
+    <a href="{{url_for('return_book')}}" class="btn-view">Return book</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Added Successfully</title>
+    <style>
+        body{
+            margin:10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            margin:10px;
+            padding:10px;
+            background-color: green;
+            color:white;
+            text-decoration: none;
+        }
+        .btn-back{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Memeber Added Successfully</h1>
+    <a href="{{url_for('home')}}">Back to Home</a>
+    <a href="{{url_for('Add_member')}}" class="btn-back">Add another member</a>
+</body>
+</html>
